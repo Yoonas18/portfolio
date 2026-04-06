@@ -1,37 +1,123 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Contact | Yoonus KY</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contact — Yoonus KY</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070b14;--bg2:#0b1220;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--teal:#00e5c0;--teal-bg:rgba(0,229,192,0.07);--amber:#f0a500;--amber-bg:rgba(240,165,0,0.08);--text:#d4e4f0;--text-dim:#6a8aa0;--text-faint:#3a5a70;--mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.025) 2px,rgba(0,0,0,0.025) 4px);pointer-events:none;z-index:9999}
+nav{position:sticky;top:0;z-index:100;background:rgba(7,11,20,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 2rem}
+.nav-brand{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--teal);text-decoration:none;margin-right:auto;letter-spacing:.05em}
+.nav-brand span{color:var(--text-dim)}
+nav a.nl{font-size:13px;font-weight:500;color:var(--text-dim);text-decoration:none;padding:0 .85rem;height:56px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+nav a.nl:hover{color:var(--text)}
+nav a.nl.active{color:var(--teal);border-bottom-color:var(--teal)}
+.c{max-width:720px;margin:0 auto;padding:4rem 2rem 5rem}
+.page-eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:.7rem}
+h1{font-size:32px;font-weight:600;color:#e8f4fc;letter-spacing:-.02em;margin-bottom:.5rem}
+.intro{color:var(--text-dim);font-size:15px;margin-bottom:3rem;max-width:500px}
+.contact-grid{display:flex;flex-direction:column;gap:.8rem;margin-bottom:3rem}
+.contact-item{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.4rem;display:flex;align-items:center;gap:1.2rem;text-decoration:none;transition:border-color .2s,transform .2s}
+.contact-item:hover{border-color:var(--border2);transform:translateX(4px)}
+.contact-item.primary{border-color:rgba(0,229,192,.2)}
+.contact-item.primary:hover{border-color:var(--teal)}
+.ci-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ci-teal{background:var(--teal-bg)}
+.ci-amber{background:var(--amber-bg)}
+.ci-blue{background:rgba(74,158,255,0.08)}
+.ci-gray{background:rgba(255,255,255,0.04)}
+.ci-label{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.ci-value{font-size:14px;font-weight:500;color:#e8f4fc}
+.ci-arrow{margin-left:auto;color:var(--text-faint);font-size:18px;transition:transform .2s}
+.contact-item:hover .ci-arrow{transform:translateX(3px);color:var(--teal)}
+/* availability */
+.avail{background:var(--teal-bg);border:1px solid rgba(0,229,192,.2);border-radius:14px;padding:1.3rem 1.5rem;margin-bottom:2rem}
+.avail-title{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--teal);text-transform:uppercase;margin-bottom:.6rem}
+.avail-row{display:flex;flex-wrap:wrap;gap:.5rem}
+.avail-pill{font-size:12px;color:var(--text-dim);background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:20px;padding:4px 12px;display:flex;align-items:center;gap:.4rem}
+.dot-g{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 5px rgba(0,229,192,.5)}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.05em}
+footer a{color:var(--text-faint);text-decoration:none}
+footer a:hover{color:var(--teal)}
+@media(max-width:600px){.c{padding:2.5rem 1.2rem 4rem}nav{padding:0 1rem}nav a.nl{padding:0 .6rem}}
+</style>
 </head>
-
 <body>
-
-<header>
-<h1>Contact</h1>
-</header>
-
 <nav>
-<a href="index.html">Home</a>
-<a href="projects.html">Projects</a>
-<a href="soc-lab.html">SOC Lab</a>
-<a href="pentesting.html">Pen Testing</a>
-<a href="contact.html">Contact</a>
+  <a href="index.html" class="nav-brand">yoonus<span>.ky</span></a>
+  <a href="index.html"      class="nl">Home</a>
+  <a href="projects.html"   class="nl">Projects</a>
+  <a href="soc-lab.html"    class="nl">SOC Lab</a>
+  <a href="pentesting.html" class="nl">Pen Testing</a>
+  <a href="contact.html"    class="nl active">Contact</a>
 </nav>
 
-<section>
+<div class="c">
+  <div class="page-eyebrow">Get in touch</div>
+  <h1>Contact</h1>
+  <p class="intro">Open to opportunities in cybersecurity — SOC analyst, penetration tester, security engineer, or security researcher roles across India and the GCC region.</p>
 
-<p>Email: Yoonasy703@gmail.com</p>
-<p>LinkedIn: linkedin.com/in/yoonusky</p>
-<p>GitHub: github.com/Yoonusky18</p>
+  <div class="avail">
+    <div class="avail-title">Availability</div>
+    <div class="avail-row">
+      <div class="avail-pill"><span class="dot-g"></span>Immediate joiner</div>
+      <div class="avail-pill"><span class="dot-g"></span>Open to GCC relocation</div>
+      <div class="avail-pill"><span class="dot-g"></span>Open to India relocation</div>
+      <div class="avail-pill"><span class="dot-g"></span>Remote / hybrid / on-site</div>
+      <div class="avail-pill"><span class="dot-g"></span>Visa sponsorship welcome</div>
+    </div>
+  </div>
 
-</section>
+  <div class="contact-grid">
+    <a href="mailto:Yoonasy703@gmail.com" class="contact-item primary">
+      <div class="ci-icon ci-teal">&#128231;</div>
+      <div>
+        <div class="ci-label">Email</div>
+        <div class="ci-value">Yoonasy703@gmail.com</div>
+      </div>
+      <div class="ci-arrow">&#8250;</div>
+    </a>
+    <a href="https://linkedin.com/in/yoonusky" target="_blank" class="contact-item">
+      <div class="ci-icon ci-blue">&#128101;</div>
+      <div>
+        <div class="ci-label">LinkedIn</div>
+        <div class="ci-value">linkedin.com/in/yoonusky</div>
+      </div>
+      <div class="ci-arrow">&#8250;</div>
+    </a>
+    <a href="https://github.com/Yoonas18" target="_blank" class="contact-item">
+      <div class="ci-icon ci-gray">&#128187;</div>
+      <div>
+        <div class="ci-label">GitHub</div>
+        <div class="ci-value">github.com/Yoonas18</div>
+      </div>
+      <div class="ci-arrow">&#8250;</div>
+    </a>
+    <a href="https://bugcrowd.com/Yoonas18" target="_blank" class="contact-item">
+      <div class="ci-icon ci-amber">&#128027;</div>
+      <div>
+        <div class="ci-label">Bugcrowd</div>
+        <div class="ci-value">bugcrowd.com/Yoonas18</div>
+      </div>
+      <div class="ci-arrow">&#8250;</div>
+    </a>
+  </div>
+
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.3rem 1.5rem">
+    <div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.1em;margin-bottom:.5rem">LOCATION</div>
+    <div style="font-size:14px;color:var(--text-dim)">Palakkad, Kerala, India</div>
+    <div style="font-size:13px;color:var(--text-faint);margin-top:.2rem">Targeting: UAE · Saudi Arabia · Qatar · Kuwait · Bahrain · Oman · Pan-India</div>
+  </div>
+</div>
 
 <footer>
-<p>© 2026 Yoonus KY</p>
+  &copy; 2026 Yoonus KY &nbsp;·&nbsp;
+  <a href="mailto:Yoonasy703@gmail.com">Yoonasy703@gmail.com</a>
 </footer>
-
 </body>
 </html>
