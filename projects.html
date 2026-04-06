@@ -1,102 +1,205 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Projects | Yoonus KY</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Projects — Yoonus KY</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070b14;--bg2:#0b1220;--bg3:#0f1829;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--teal:#00e5c0;--teal-bg:rgba(0,229,192,0.07);--amber:#f0a500;--amber-bg:rgba(240,165,0,0.08);--red:#ff4d6d;--red-bg:rgba(255,77,109,0.08);--blue:#4a9eff;--blue-bg:rgba(74,158,255,0.08);--text:#d4e4f0;--text-dim:#6a8aa0;--text-faint:#3a5a70;--mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.025) 2px,rgba(0,0,0,0.025) 4px);pointer-events:none;z-index:9999}
+nav{position:sticky;top:0;z-index:100;background:rgba(7,11,20,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 2rem}
+.nav-brand{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--teal);text-decoration:none;margin-right:auto;letter-spacing:.05em}
+.nav-brand span{color:var(--text-dim)}
+nav a.nl{font-size:13px;font-weight:500;color:var(--text-dim);text-decoration:none;padding:0 .85rem;height:56px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+nav a.nl:hover{color:var(--text)}
+nav a.nl.active{color:var(--teal);border-bottom-color:var(--teal)}
+.c{max-width:960px;margin:0 auto;padding:2.5rem 2rem 4rem}
+.page-hero{margin-bottom:2.5rem}
+.page-eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:.7rem}
+.page-hero h1{font-size:32px;font-weight:600;color:#e8f4fc;letter-spacing:-.02em;margin-bottom:.5rem}
+.page-hero p{color:var(--text-dim);font-size:15px;max-width:560px}
+.st{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:.7rem}
+.st::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* PROJECT CARDS */
+.project-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.6rem;margin-bottom:1.2rem;transition:border-color .2s,transform .2s;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start}
+.project-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.project-card.featured{border-color:rgba(0,229,192,.2);background:linear-gradient(135deg,var(--bg2) 0%,rgba(0,229,192,.03) 100%)}
+.proj-top{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
+.proj-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.pi-teal{background:var(--teal-bg)}
+.pi-amber{background:var(--amber-bg)}
+.pi-blue{background:var(--blue-bg)}
+.pi-red{background:var(--red-bg)}
+.proj-title{font-size:16px;font-weight:600;color:#e8f4fc}
+.proj-subtitle{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.08em}
+.proj-desc{font-size:14px;color:var(--text-dim);margin-bottom:1rem;line-height:1.6}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.tag{font-family:var(--mono);font-size:10px;color:var(--text-dim);background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;padding:2px 7px}
+.proj-features{list-style:none;margin-bottom:1rem}
+.proj-features li{font-size:13px;color:var(--text-dim);padding:.2rem 0;display:flex;align-items:flex-start;gap:.6rem}
+.proj-features li::before{content:'›';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px}
+.proj-links{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.45rem;font-size:12px;font-weight:600;padding:.45rem 1rem;border-radius:7px;text-decoration:none;transition:all .2s;border:1px solid}
+.btn-teal{background:var(--teal-bg);color:var(--teal);border-color:rgba(0,229,192,.3)}
+.btn-teal:hover{background:rgba(0,229,192,.14);border-color:var(--teal)}
+.btn-ghost{background:transparent;color:var(--text-dim);border-color:var(--border)}
+.btn-ghost:hover{color:var(--text);border-color:var(--border2)}
+.badge-new{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--teal);background:var(--teal-bg);border:1px solid rgba(0,229,192,.3);border-radius:4px;padding:2px 7px;letter-spacing:.05em}
+
+/* BUG BOUNTY SECTION */
+.bb-card{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 14px 14px 0;padding:1.3rem 1.4rem;margin-bottom:1rem}
+.bb-title{font-size:14px;font-weight:600;color:#e8f4fc;margin-bottom:.3rem}
+.bb-body{font-size:13px;color:var(--text-dim)}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.05em}
+footer a{color:var(--text-faint);text-decoration:none}
+footer a:hover{color:var(--teal)}
+@media(max-width:600px){.c{padding:2rem 1.2rem 3rem}nav{padding:0 1rem}nav a.nl{padding:0 .6rem}.project-card{grid-template-columns:1fr}}
+</style>
 </head>
-
 <body>
-
-<header>
-<h1>Cybersecurity Projects</h1>
-<p>Security tools, monitoring systems, and attack simulation research</p>
-</header>
-
 <nav>
-<a href="index.html">Home</a>
-<a href="projects.html">Projects</a>
-<a href="soc-lab.html">SOC Lab</a>
-<a href="pentesting.html">Pen Testing</a>
-<a href="contact.html">Contact</a>
+  <a href="index.html" class="nav-brand">yoonus<span>.ky</span></a>
+  <a href="index.html"      class="nl">Home</a>
+  <a href="projects.html"   class="nl active">Projects</a>
+  <a href="soc-lab.html"    class="nl">SOC Lab</a>
+  <a href="pentesting.html" class="nl">Pen Testing</a>
+  <a href="contact.html"    class="nl">Contact</a>
 </nav>
 
-<section>
+<div class="c">
+  <div class="page-hero">
+    <div class="page-eyebrow">Portfolio</div>
+    <h1>Projects</h1>
+    <p>Security tools, lab environments, and research built from scratch — every project here is something I designed and deployed myself.</p>
+  </div>
 
-<div class="project">
+  <div class="st">Featured Projects</div>
 
-<h3>File Integrity Monitoring System</h3>
+  <!-- FIM Watchdog -->
+  <div class="project-card featured">
+    <div>
+      <div class="proj-top">
+        <div class="proj-icon pi-teal">&#128270;</div>
+        <div>
+          <div class="proj-title">FIM-Watchdog <span class="badge-new">OPEN SOURCE</span></div>
+          <div class="proj-subtitle">FILE INTEGRITY MONITORING PLATFORM</div>
+        </div>
+      </div>
+      <p class="proj-desc">A full-stack File Integrity Monitoring system built from scratch. The Python agent hashes every file with SHA-256, detects changes in real time, and reports to a FastAPI backend that streams live alerts to a web dashboard and forwards to Telegram via n8n automation.</p>
+      <div class="tag-row">
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">Server-Sent Events</span><span class="tag">n8n</span><span class="tag">SHA-256</span><span class="tag">Telegram</span>
+      </div>
+      <ul class="proj-features">
+        <li>SHA-256 hashing — detects any byte-level file modification</li>
+        <li>Real-time web dashboard with live alert stream via SSE</li>
+        <li>FastAPI event collection server with SQLite persistence</li>
+        <li>n8n workflow automation for instant Telegram notifications</li>
+        <li>Cross-platform — works on Linux, macOS, and Windows</li>
+        <li>Fully documented with architecture diagram and setup guide</li>
+      </ul>
+      <div class="proj-links">
+        <a href="https://github.com/Yoonas18/fim-security-automation" class="btn btn-teal" target="_blank">&#128279; GitHub</a>
+        <a href="soc-lab.html" class="btn btn-ghost">&#128202; SOC Lab Context</a>
+      </div>
+    </div>
+  </div>
 
-<p>
-Custom Python-based File Integrity Monitoring platform designed to detect
-unauthorized file modifications using SHA-256 hashing and real-time monitoring.
-</p>
+  <!-- ELK Lab -->
+  <div class="project-card featured">
+    <div>
+      <div class="proj-top">
+        <div class="proj-icon pi-blue">&#128202;</div>
+        <div>
+          <div class="proj-title">ELK Stack Cloud SOC Lab</div>
+          <div class="proj-subtitle">SELF-DEPLOYED SECURITY OPERATIONS LAB</div>
+        </div>
+      </div>
+      <p class="proj-desc">Deployed a full ELK Stack (Elasticsearch, Logstash, Kibana) on cloud infrastructure from scratch. Enrolled a Windows VM via Elastic Agent and configured Elastic Defend endpoint security policies — building and testing real detection rules for login monitoring and File Integrity Monitoring.</p>
+      <div class="tag-row">
+        <span class="tag">Elasticsearch</span><span class="tag">Logstash</span><span class="tag">Kibana</span><span class="tag">Elastic Agent</span><span class="tag">Elastic Defend</span><span class="tag">KQL</span><span class="tag">EQL</span><span class="tag">Windows EDR</span>
+      </div>
+      <ul class="proj-features">
+        <li>Full ELK stack deployed on cloud — not a local VM or tutorial walkthrough</li>
+        <li>Elastic Defend endpoint policies for Windows login event detection</li>
+        <li>File Integrity Monitoring using Elastic's built-in FIM capabilities</li>
+        <li>Currently researching lateral movement and privilege escalation detection</li>
+      </ul>
+      <div class="proj-links">
+        <a href="soc-lab.html" class="btn btn-teal">&#128202; Full Lab Documentation</a>
+      </div>
+    </div>
+  </div>
 
-<ul>
-<li>File integrity monitoring using SHA-256 hashing</li>
-<li>Real-time monitoring agent</li>
-<li>Centralized event collection API</li>
-<li>Security automation workflows</li>
-<li>Telegram alert notifications</li>
-</ul>
+  <!-- Azure RDP -->
+  <div class="project-card">
+    <div>
+      <div class="proj-top">
+        <div class="proj-icon pi-amber">&#9729;</div>
+        <div>
+          <div class="proj-title">Azure RDP Brute-Force Investigation</div>
+          <div class="proj-subtitle">LIVE CLOUD ATTACK ANALYSIS</div>
+        </div>
+      </div>
+      <p class="proj-desc">Deployed a Windows VM on Microsoft Azure and deliberately exposed RDP to the internet to capture real-world brute-force attacks. Independently analysed attacker IP patterns, authentication failure clustering, and timing-based attack behaviour over 24-48 hours. Documented as a SOC-style incident report.</p>
+      <div class="tag-row">
+        <span class="tag">Microsoft Azure</span><span class="tag">Windows Server</span><span class="tag">RDP</span><span class="tag">Log Analysis</span><span class="tag">Incident Report</span>
+      </div>
+      <ul class="proj-features">
+        <li>Real live attacks — not simulated or synthetic traffic</li>
+        <li>IP geolocation analysis of attacker sources</li>
+        <li>Authentication failure pattern analysis and timeline reconstruction</li>
+        <li>Documented in a structured SOC-style investigation report</li>
+      </ul>
+      <div class="proj-links">
+        <a href="https://github.com/Yoonas18/soc-attack-simulations" class="btn btn-ghost" target="_blank">&#128279; GitHub</a>
+      </div>
+    </div>
+  </div>
 
-<a href="https://github.com/Yoonas18" target="_blank">
-View Project on GitHub
-</a>
+  <!-- Mini SIEM -->
+  <div class="project-card">
+    <div>
+      <div class="proj-top">
+        <div class="proj-icon pi-teal">&#128737;</div>
+        <div>
+          <div class="proj-title">Mini SIEM Log Monitoring System</div>
+          <div class="proj-subtitle">CUSTOM LOG CORRELATION PIPELINE</div>
+        </div>
+      </div>
+      <p class="proj-desc">Built a custom log ingestion and correlation pipeline using Python and PostgreSQL to simulate SOC monitoring workflows. Detects brute-force authentication attacks using rule-based correlation — designed to understand how SIEM detection logic works at a fundamental level.</p>
+      <div class="tag-row">
+        <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">SQL Correlation</span><span class="tag">Log Analysis</span><span class="tag">Brute-Force Detection</span>
+      </div>
+      <ul class="proj-features">
+        <li>Custom log ingestion pipeline — no off-the-shelf SIEM used</li>
+        <li>Rule-based SQL correlation for detecting authentication anomalies</li>
+        <li>Brute-force detection with configurable threshold alerting</li>
+      </ul>
+    </div>
+  </div>
 
+  <!-- Bug Bounty -->
+  <div class="st" style="margin-top:1rem">Bug Bounty Research</div>
+  <div class="bb-card">
+    <div class="bb-title">Independent Bug Bounty Researcher — Bugcrowd</div>
+    <div class="bb-body">Actively hunting vulnerabilities on Bugcrowd programmes. Focus areas: Broken Access Control, IDOR, XSS, Authentication flaws, and Server-Side Misconfiguration. Have identified a server-side misconfiguration in a production application through independent research and practised responsible disclosure.</div>
+  </div>
+  <div class="bb-card">
+    <div class="bb-title">Server-Side Misconfiguration — Research Write-up</div>
+    <div class="bb-body">Documented a server-side misconfiguration finding — covering discovery methodology, impact analysis, CVSS scoring, and remediation recommendations. Written as a portfolio demonstration of responsible disclosure and security research methodology. Target intentionally omitted per ethical disclosure practices.</div>
+  </div>
 </div>
-
-<div class="project">
-
-<h3>Mini SIEM Log Monitoring</h3>
-
-<p>
-Mini SIEM pipeline designed to collect security logs and detect suspicious
-authentication activity using SQL correlation rules.
-</p>
-
-<ul>
-<li>Security log ingestion pipeline</li>
-<li>PostgreSQL event storage</li>
-<li>SQL detection rules</li>
-<li>Brute-force login detection</li>
-</ul>
-
-<a href="https://github.com/Yoonas18" target="_blank">
-View Project on GitHub
-</a>
-
-</div>
-
-<div class="project">
-
-<h3>SOC Attack Simulation Reports</h3>
-
-<p>
-Collection of SOC-style incident investigation reports including brute force
-authentication attacks, port scanning activity, and Azure RDP brute-force
-attack analysis.
-</p>
-
-<ul>
-<li>Brute force authentication attack detection</li>
-<li>Network port scan investigation</li>
-<li>Azure RDP brute-force attack analysis</li>
-<li>Security log investigation and mitigation strategies</li>
-</ul>
-
-<a href="https://github.com/Yoonas18/soc-attack-simulations" target="_blank">
-View Reports on GitHub
-</a>
-
-</div>
-
-</section>
 
 <footer>
-<p>© 2026 Yoonus KY</p>
+  &copy; 2026 Yoonus KY &nbsp;·&nbsp;
+  <a href="mailto:Yoonasy703@gmail.com">Yoonasy703@gmail.com</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Yoonas18" target="_blank">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://bugcrowd.com/Yoonas18" target="_blank">Bugcrowd</a>
 </footer>
-
 </body>
 </html>
