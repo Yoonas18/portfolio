@@ -1,61 +1,287 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Yoonus KY | Cybersecurity Portfolio</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Yoonus KY — Cybersecurity Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#070b14;--bg2:#0b1220;--bg3:#0f1829;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --teal:#00e5c0;--teal-bg:rgba(0,229,192,0.07);
+  --amber:#f0a500;--amber-bg:rgba(240,165,0,0.08);
+  --red:#ff4d6d;--red-bg:rgba(255,77,109,0.08);
+  --blue:#4a9eff;--blue-bg:rgba(74,158,255,0.08);
+  --text:#d4e4f0;--text-dim:#6a8aa0;--text-faint:#3a5a70;
+  --mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.025) 2px,rgba(0,0,0,0.025) 4px);pointer-events:none;z-index:9999}
 
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(7,11,20,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 2rem}
+.nav-brand{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--teal);text-decoration:none;margin-right:auto;letter-spacing:.05em}
+.nav-brand span{color:var(--text-dim)}
+nav a.nl{font-size:13px;font-weight:500;color:var(--text-dim);text-decoration:none;padding:0 .85rem;height:56px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+nav a.nl:hover{color:var(--text)}
+nav a.nl.active{color:var(--teal);border-bottom-color:var(--teal)}
+
+/* HERO */
+.hero{padding:5rem 2rem 4rem;max-width:960px;margin:0 auto}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:.7rem}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--teal);opacity:.6}
+.hero h1{font-size:clamp(36px,6vw,60px);font-weight:600;color:#e8f4fc;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.2rem}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero-sub{font-size:17px;color:var(--text-dim);max-width:560px;margin-bottom:2rem;font-weight:300}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:3rem}
+.btn{display:inline-flex;align-items:center;gap:.45rem;font-size:13px;font-weight:600;padding:.6rem 1.2rem;border-radius:8px;text-decoration:none;transition:all .2s;border:1px solid}
+.btn-teal{background:var(--teal-bg);color:var(--teal);border-color:rgba(0,229,192,.3)}
+.btn-teal:hover{background:rgba(0,229,192,.14);border-color:var(--teal)}
+.btn-ghost{background:transparent;color:var(--text-dim);border-color:var(--border)}
+.btn-ghost:hover{color:var(--text);border-color:var(--border2)}
+
+/* STATUS STRIP */
+.status-strip{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:3.5rem}
+.status-pill{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:11px;color:var(--text-dim);background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:5px 12px}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-green{background:#00e5c0;box-shadow:0 0 6px rgba(0,229,192,.5)}
+.dot-amber{background:#f0a500}
+.dot-blue{background:#4a9eff}
+
+/* SECTION TITLE */
+.st{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:.7rem}
+.st::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* CONTAINER */
+.c{max-width:960px;margin:0 auto;padding:0 2rem 3.5rem}
+
+/* SKILL GRID */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.skill-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.3rem;transition:border-color .2s,transform .2s}
+.skill-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.skill-card-title{font-size:13px;font-weight:600;color:#e8f4fc;margin-bottom:.3rem;display:flex;align-items:center;gap:.6rem}
+.skill-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.si-teal{background:var(--teal-bg)}
+.si-amber{background:var(--amber-bg)}
+.si-red{background:var(--red-bg)}
+.si-blue{background:var(--blue-bg)}
+.skill-card p{font-size:13px;color:var(--text-dim);line-height:1.55}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
+.tag{font-family:var(--mono);font-size:10px;color:var(--text-dim);background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;padding:2px 7px}
+
+/* CERT STRIP */
+.cert-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem}
+.cert-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;display:flex;align-items:center;gap:1rem;transition:border-color .2s}
+.cert-card:hover{border-color:rgba(0,229,192,.2)}
+.cert-icon{font-size:22px;flex-shrink:0}
+.cert-name{font-size:13px;font-weight:600;color:#e8f4fc}
+.cert-issuer{font-size:12px;color:var(--text-dim)}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:1.4rem;padding-bottom:2rem;position:relative}
+.tl-item:last-child{padding-bottom:0}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:36px}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);border:2px solid var(--bg);box-shadow:0 0 8px rgba(0,229,192,.4);flex-shrink:0;margin-top:5px}
+.tl-dot.dim{background:var(--text-faint);box-shadow:none}
+.tl-line{flex:1;width:1px;background:var(--border);margin-top:4px}
+.tl-right{flex:1;padding-bottom:0}
+.tl-title{font-size:14px;font-weight:600;color:#e8f4fc}
+.tl-org{font-size:13px;color:var(--teal)}
+.tl-period{font-family:var(--mono);font-size:11px;color:var(--text-faint);margin:.1rem 0 .5rem}
+.tl-body{font-size:13px;color:var(--text-dim)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.05em}
+footer a{color:var(--text-faint);text-decoration:none}
+footer a:hover{color:var(--teal)}
+@media(max-width:600px){.hero{padding:3rem 1.2rem 2.5rem}.c{padding:0 1.2rem 2.5rem}nav{padding:0 1rem}nav a.nl{padding:0 .6rem}}
+</style>
+</head>
 <body>
 
-<header>
-<h1>Yoonus KY</h1>
-<p>Cybersecurity Researcher | SOC Analyst</p>
-</header>
-
 <nav>
-<a href="index.html">Home</a>
-<a href="projects.html">Projects</a>
-<a href="soc-lab.html">SOC Lab</a>
-<a href="pentesting.html">Pen Testing</a>
-<a href="contact.html">Contact</a>
+  <a href="index.html" class="nav-brand">yoonus<span>.ky</span></a>
+  <a href="index.html"    class="nl active">Home</a>
+  <a href="projects.html" class="nl">Projects</a>
+  <a href="soc-lab.html"  class="nl">SOC Lab</a>
+  <a href="pentesting.html" class="nl">Pen Testing</a>
+  <a href="contact.html"  class="nl">Contact</a>
 </nav>
 
-<section>
-
-<h2>About Me</h2>
-
-<p>
-Cybersecurity researcher with hands-on experience in SIEM monitoring, penetration
-testing, and cloud security investigation. Skilled in log analysis, threat detection, and
-security event monitoring using SIEM platforms. Experienced in assessing web applications,
-APIs, Android applications, networks, and Active Directory environments while developing
-security tools and performing SOC-style investigations.
-</p>
-
-<h2>Core Skills</h2>
-
-<ul>
-<li>SIEM Monitoring (Splunk, Wazuh, Azure Sentinel)</li>
-<li>Threat Detection & Log Analysis</li>
-<li>Security Automation</li>
-<li>Network Security</li>
-<li>Penetration Testing (Web, API, Android, Active Directory, Network)</li>
-<li>Python Security Tools</li>
-</ul>
-
-<h2>GitHub</h2>
-
-<p>
-<a href="https://github.com/Yoonas18" target="_blank">View My GitHub</a>
-</p>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Cybersecurity Portfolio</div>
+  <h1>Yoonus K Y<br><em>Security Researcher</em></h1>
+  <p class="hero-sub">Cybersecurity trainer and independent researcher — building real tools, running real labs, and hunting real vulnerabilities.</p>
+  <div class="hero-cta">
+    <a href="projects.html" class="btn btn-teal">&#128220; View Projects</a>
+    <a href="soc-lab.html"  class="btn btn-ghost">&#128202; SOC Lab</a>
+    <a href="contact.html"  class="btn btn-ghost">&#9993; Contact</a>
+    <a href="https://github.com/Yoonas18" target="_blank" class="btn btn-ghost">&#128279; GitHub</a>
+  </div>
+  <div class="status-strip">
+    <div class="status-pill"><span class="dot dot-green"></span>Open to opportunities — GCC &amp; India</div>
+    <div class="status-pill"><span class="dot dot-amber"></span>CEH v12 Certified</div>
+    <div class="status-pill"><span class="dot dot-blue"></span>Immediate joiner</div>
+    <div class="status-pill"><span class="dot dot-blue"></span>3+ yrs cybersecurity experience</div>
+  </div>
 </section>
 
-<footer>
-<p>© 2026 Yoonus KY</p>
-</footer>
+<!-- ABOUT -->
+<div class="c">
+  <div class="st">About</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem">
+    <div>
+      <p style="color:var(--text-dim);font-size:15px;margin-bottom:1rem">
+        I'm a cybersecurity professional with 3+ years of experience in security training, penetration testing fundamentals, and self-directed research. I currently work as a Cybersecurity Researcher at Offenso Hackers Academy, building attack simulation labs and training the next generation of security professionals.
+      </p>
+      <p style="color:var(--text-dim);font-size:15px">
+        My technical skills in ELK Stack, SIEM monitoring, and threat detection were built entirely through independent hands-on research — deploying real infrastructure, writing working tools, and studying real attack scenarios. Everything in this portfolio is something I built or investigated myself.
+      </p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.7rem">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.1em;margin-bottom:.5rem">CURRENTLY</div>
+        <div style="font-size:13px;font-weight:600;color:#e8f4fc">Cybersecurity Researcher</div>
+        <div style="font-size:12px;color:var(--teal)">Offenso Hackers Academy</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.1em;margin-bottom:.5rem">RESEARCHING</div>
+        <div style="font-size:13px;color:var(--text-dim)">ELK advanced detection · KQL/EQL queries · Lateral movement patterns · MITRE ATT&amp;CK mapping</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.1em;margin-bottom:.5rem">LOCATION</div>
+        <div style="font-size:13px;color:var(--text-dim)">Palakkad, Kerala, India · Open to relocation</div>
+      </div>
+    </div>
+  </div>
+  @media(max-width:640px){.about-grid{grid-template-columns:1fr!important}}
 
+  <!-- SKILLS -->
+  <div class="st">Technical Skills</div>
+  <div class="skill-grid" style="margin-bottom:3rem">
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon si-teal">&#128202;</div>ELK Stack</div>
+      <p>Self-deployed full ELK on cloud. Elastic Agent, Elastic Defend, detection rules, FIM, Kibana dashboards.</p>
+      <div class="tag-row">
+        <span class="tag">Elasticsearch</span><span class="tag">Logstash</span><span class="tag">Kibana</span><span class="tag">Elastic Defend</span><span class="tag">KQL</span><span class="tag">EQL</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon si-blue">&#128737;</div>SIEM Platforms</div>
+      <p>Lab-based research across multiple SIEM tools — log ingestion, correlation rules, alert tuning, dashboards.</p>
+      <div class="tag-row">
+        <span class="tag">Splunk</span><span class="tag">Wazuh</span><span class="tag">Azure Sentinel</span><span class="tag">QRadar (learning)</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon si-red">&#128270;</div>Penetration Testing</div>
+      <p>Security testing across web apps, APIs, Android, Active Directory, and networks. Bugcrowd bug bounty researcher.</p>
+      <div class="tag-row">
+        <span class="tag">Burp Suite</span><span class="tag">Nmap</span><span class="tag">Wireshark</span><span class="tag">SQLMap</span><span class="tag">OWASP Top 10</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon si-teal">&#128187;</div>Security Automation</div>
+      <p>Built working security tools from scratch — FIM platform, SIEM pipeline, automation workflows.</p>
+      <div class="tag-row">
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">n8n</span><span class="tag">SQLite</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon si-amber">&#9729;</div>Cloud Security</div>
+      <p>Azure VM deployment, live RDP brute-force capture and analysis, cloud-based ELK infrastructure.</p>
+      <div class="tag-row">
+        <span class="tag">Microsoft Azure</span><span class="tag">RDP Analysis</span><span class="tag">Log Analysis</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title"><div class="skill-icon si-blue">&#128421;</div>Operating Systems</div>
+      <p>Daily driver on Linux for security research. Windows Server administration and Active Directory lab work.</p>
+      <div class="tag-row">
+        <span class="tag">Kali Linux</span><span class="tag">Ubuntu</span><span class="tag">Windows Server</span><span class="tag">Active Directory</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="st">Certifications</div>
+  <div class="cert-row" style="margin-bottom:3rem">
+    <div class="cert-card">
+      <div class="cert-icon">&#127941;</div>
+      <div>
+        <div class="cert-name">Certified Ethical Hacker (CEH v12)</div>
+        <div class="cert-issuer">EC-Council</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">&#127941;</div>
+      <div>
+        <div class="cert-name">Certified AppSec Practitioner (CAP)</div>
+        <div class="cert-issuer">SecOps Group</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">&#127941;</div>
+      <div>
+        <div class="cert-name">Certified IT Infrastructure &amp; Cyber SOC Analyst</div>
+        <div class="cert-issuer">RedTeam Hacker Academy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <div class="st">Experience</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-title">Cybersecurity Researcher &amp; Trainer</div>
+        <div class="tl-org">Offenso Hackers Academy, Kozhikode</div>
+        <div class="tl-period">Jul 2025 — Present</div>
+        <div class="tl-body">Building attack simulation labs, delivering security training, integrating ELK/Wazuh/Splunk into training environments, and researching attacker TTPs.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-title">Cyber Security Trainer &amp; Developer</div>
+        <div class="tl-org">Metallearn</div>
+        <div class="tl-period">Oct 2024 — Jul 2025</div>
+        <div class="tl-body">Delivered security training and worked alongside developers conducting basic web application security testing — authentication, input validation, OWASP vulnerabilities.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot dim"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-title">Junior Cyber Security Researcher</div>
+        <div class="tl-org">RedTeam Hacker Academy</div>
+        <div class="tl-period">Jun 2023 — Oct 2024</div>
+        <div class="tl-body">Instructor-led workshops on ethical hacking and network security. Mentored students through CEH preparation and practical lab work.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot dim"></div></div>
+      <div class="tl-right">
+        <div class="tl-title">Cyber Security Course (CICSA)</div>
+        <div class="tl-org">RedTeam Hacker Academy</div>
+        <div class="tl-period">2022 — 2023</div>
+        <div class="tl-body">Formal cybersecurity training — penetration testing, ethical hacking, network security fundamentals.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Yoonus KY &nbsp;·&nbsp;
+  <a href="mailto:Yoonasy703@gmail.com">Yoonasy703@gmail.com</a> &nbsp;·&nbsp;
+  <a href="https://linkedin.com/in/yoonusky" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Yoonas18" target="_blank">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://bugcrowd.com/Yoonas18" target="_blank">Bugcrowd</a>
+</footer>
 </body>
 </html>
