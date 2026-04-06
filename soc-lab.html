@@ -2,7 +2,307 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SOC Home Lab | Yoonus KY</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #0a0e1a;
+      color: #c8d8e8;
+      line-height: 1.7;
+    }
+    nav {
+      background: #0d1525;
+      border-bottom: 1px solid #1e2d45;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 56px;
+    }
+    nav .brand { font-weight: 700; color: #e2ecf8; font-size: 15px; margin-right: auto; }
+    nav a { color: #7a9bbf; text-decoration: none; font-size: 14px; transition: color .2s; }
+    nav a:hover { color: #e2ecf8; }
+    .hero {
+      background: linear-gradient(135deg, #0d1525 0%, #0f1e35 100%);
+      border-bottom: 1px solid #1e2d45;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    .hero h1 { font-size: 28px; font-weight: 700; color: #e2ecf8; margin-bottom: .5rem; }
+    .hero p { color: #7a9bbf; font-size: 15px; max-width: 620px; margin: 0 auto; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 1.2rem; }
+    .badge {
+      font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+      border: 1px solid;
+    }
+    .badge-teal  { background: #0a2a24; color: #4ecfb0; border-color: #1a5a4a; }
+    .badge-blue  { background: #0a1a30; color: #60a0e0; border-color: #1a3a60; }
+    .badge-amber { background: #2a1a08; color: #e0a040; border-color: #5a3a10; }
+    .badge-red   { background: #2a0a0a; color: #e06060; border-color: #5a1a1a; }
+    .badge-purple{ background: #1a0a2a; color: #a070e0; border-color: #3a1a5a; }
+
+    main { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+    /* Stack cards */
+    .stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    @media(max-width: 600px) { .stack-grid { grid-template-columns: 1fr; } }
+    .stack-card {
+      background: #0d1525;
+      border: 1px solid #1e2d45;
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+    }
+    .stack-card .card-title {
+      font-size: 14px; font-weight: 700; color: #e2ecf8; margin-bottom: .3rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .stack-card p { font-size: 13px; color: #7a9bbf; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-teal   { background: #4ecfb0; }
+    .dot-blue   { background: #60a0e0; }
+    .dot-amber  { background: #e0a040; }
+    .dot-purple { background: #a070e0; }
+    .dot-red    { background: #e06060; }
+
+    /* Section headers */
+    h2 {
+      font-size: 18px; font-weight: 700; color: #e2ecf8;
+      margin: 2.2rem 0 .8rem;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid #1e3a5a;
+    }
+    h2 span { color: #4ecfb0; }
+    h3 { font-size: 15px; font-weight: 600; color: #c0d4e8; margin: 1.4rem 0 .4rem; }
+
+    /* Feature blocks */
+    .feature-block {
+      background: #0d1525;
+      border: 1px solid #1e2d45;
+      border-left: 3px solid #4ecfb0;
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.2rem;
+      margin-bottom: .8rem;
+    }
+    .feature-block.amber { border-left-color: #e0a040; }
+    .feature-block.blue  { border-left-color: #60a0e0; }
+    .feature-block.red   { border-left-color: #e06060; }
+    .feature-block.purple{ border-left-color: #a070e0; }
+    .feature-block .f-title { font-size: 14px; font-weight: 700; color: #e2ecf8; margin-bottom: .3rem; }
+    .feature-block p { font-size: 13px; color: #7a9bbf; }
+    .feature-block code {
+      font-family: "Fira Mono", "Cascadia Code", monospace;
+      font-size: 12px; background: #0a1020; color: #4ecfb0;
+      padding: 2px 6px; border-radius: 4px;
+    }
+
+    /* Detection rule example */
+    .rule-box {
+      background: #060d18;
+      border: 1px solid #1e2d45;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      font-family: "Fira Mono", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #8ab4d8;
+      overflow-x: auto;
+      margin: .8rem 0;
+    }
+    .rule-box .kw  { color: #60a0e0; }
+    .rule-box .val { color: #4ecfb0; }
+    .rule-box .cmt { color: #3a5a7a; }
+
+    /* Detection table */
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin: .8rem 0; }
+    th { background: #0d1525; color: #60a0e0; text-align: left; padding: 8px 12px; border-bottom: 1px solid #1e2d45; font-weight: 600; }
+    td { padding: 8px 12px; border-bottom: 1px solid #141f2e; color: #a0b8d0; }
+    tr:hover td { background: #0d1a2a; }
+    .sev-high   { color: #e06060; font-weight: 700; }
+    .sev-med    { color: #e0a040; font-weight: 700; }
+    .sev-info   { color: #60a0e0; font-weight: 700; }
+
+    /* Architecture diagram */
+    .arch {
+      background: #0d1525;
+      border: 1px solid #1e2d45;
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-family: "Fira Mono", "Cascadia Code", monospace;
+      font-size: 12px;
+      color: #5a8aaa;
+      line-height: 1.9;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .arch .hl { color: #4ecfb0; }
+    .arch .dim { color: #2a4a6a; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #3a5a7a;
+      font-size: 13px;
+      border-top: 1px solid #1e2d45;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">Yoonus KY</span>
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="soc-lab.html">SOC Lab</a>
+  <a href="pentesting.html">Pen Testing</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="hero">
+  <h1>SOC Home Lab</h1>
+  <p>Hands-on security operations environment — ELK Stack deployment, endpoint monitoring, threat detection, and incident investigation research.</p>
+  <div class="badge-row">
+    <span class="badge badge-teal">ELK Stack</span>
+    <span class="badge badge-blue">Elastic Defend</span>
+    <span class="badge badge-amber">Wazuh SIEM</span>
+    <span class="badge badge-blue">Splunk</span>
+    <span class="badge badge-teal">Elastic Agent</span>
+    <span class="badge badge-purple">File Integrity Monitoring</span>
+    <span class="badge badge-red">Attack Simulation</span>
+    <span class="badge badge-blue">Azure Cloud</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- ── ELK STACK LAB ───────────────────────────────────────────── -->
+  <h2><span>01.</span> ELK Stack Security Lab — Cloud Deployment</h2>
+  <p style="color:#7a9bbf; font-size:14px; margin-bottom:1.2rem;">
+    Deployed a full production-grade ELK Stack on cloud infrastructure from scratch. This lab mirrors the architecture used in real enterprise SOC environments and serves as the primary research platform for threat detection and incident investigation.
+  </p>
+
+  <!-- Architecture -->
+  <div class="arch">
+<span class="hl">┌─────────────────────┐</span>       <span class="hl">┌──────────────────────────┐</span>
+<span class="hl">│   Windows VM        │</span>       <span class="hl">│   ELK Server (Cloud)     │</span>
+<span class="hl">│   (Elastic Agent)   │</span>──────▶<span class="hl">│                          │</span>
+<span class="hl">│                     │</span>       <span class="hl">│  Elasticsearch  :9200    │</span>
+<span class="hl">│  • Elastic Defend   │</span>       <span class="hl">│  Logstash       :5044    │</span>
+<span class="hl">│  • FIM policy       │</span>       <span class="hl">│  Kibana         :5601    │</span>
+<span class="hl">│  • Login monitoring │</span>       <span class="hl">│                          │</span>
+<span class="hl">└─────────────────────┘</span>       <span class="hl">│  Security → Alerts       │</span>
+                               <span class="hl">│  Dashboards → Analysis   │</span>
+                               <span class="hl">└──────────────────────────┘</span>
+  </div>
+
+  <h3>Stack components deployed</h3>
+  <div class="stack-grid">
+    <div class="stack-card">
+      <div class="card-title"><span class="dot dot-teal"></span>Elasticsearch</div>
+      <p>Central data store for all security events and telemetry. Configured index lifecycle management and field mappings for security data.</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-title"><span class="dot dot-blue"></span>Logstash</div>
+      <p>Log ingestion and transformation pipeline. Configured to parse and normalise Windows event logs before indexing into Elasticsearch.</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-title"><span class="dot dot-amber"></span>Kibana</div>
+      <p>Security dashboards, alert management, and investigation interface. Used for real-time threat visualisation and event analysis.</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-title"><span class="dot dot-purple"></span>Elastic Agent + Fleet</div>
+      <p>Deployed Elastic Agent on a Windows VM and enrolled it into Fleet for centralised policy management and telemetry collection.</p>
+    </div>
+  </div>
+
+  <!-- ── ELASTIC DEFEND ─────────────────────────────────────────── -->
+  <h2><span>02.</span> Elastic Defend — Endpoint Detection & Response</h2>
+  <p style="color:#7a9bbf; font-size:14px; margin-bottom:1.2rem;">
+    Configured Elastic Defend as the EDR layer on the Windows VM. Created and tuned custom security policies covering login monitoring and file integrity — then analysed alert behaviour and investigated detections in Kibana.
+  </p>
+
+  <div class="feature-block">
+    <div class="f-title">Windows Login Monitoring Policy</div>
+    <p>Built a detection policy that captures both <code>successful</code> and <code>failed</code> Windows login events (Event ID 4624 / 4625). Analysed alert firing patterns, source IP correlation, and timing to distinguish brute-force from legitimate access. Tested by simulating failed login sequences and verifying alert generation in Kibana Security.</p>
+  </div>
+
+  <div class="feature-block amber">
+    <div class="f-title">File Integrity Monitoring (FIM)</div>
+    <p>Configured Elastic Defend's built-in FIM capability to monitor critical Windows directories. Tested by creating, modifying, and deleting files and verifying detection accuracy in the Kibana alerts feed. Cross-referenced findings with custom Python FIM tool to compare detection approaches.</p>
+  </div>
+
+  <div class="feature-block blue">
+    <div class="f-title">Alert Investigation Workflow</div>
+    <p>Practiced end-to-end SOC analyst workflow in Kibana Security: alert triage → event timeline analysis → process tree investigation → documentation. Built familiarity with Elastic's detection rule structure for future rule creation and tuning work.</p>
+  </div>
+
+  <!-- ── DETECTION TABLE ─────────────────────────────────────────── -->
+  <h3>Detections researched and tested</h3>
+  <table>
+    <thead>
+      <tr><th>Detection</th><th>Source</th><th>Event IDs</th><th>Severity</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Failed login brute-force</td><td>Windows Security Log</td><td>4625</td><td class="sev-high">High</td><td>✅ Tested</td></tr>
+      <tr><td>Successful login</td><td>Windows Security Log</td><td>4624</td><td class="sev-info">Info</td><td>✅ Tested</td></tr>
+      <tr><td>File modification in system dirs</td><td>Elastic Defend FIM</td><td>—</td><td class="sev-med">Medium</td><td>✅ Tested</td></tr>
+      <tr><td>New file created in monitored path</td><td>Elastic Defend FIM</td><td>—</td><td class="sev-med">Medium</td><td>✅ Tested</td></tr>
+      <tr><td>Lateral movement indicators</td><td>Process + Network events</td><td>4648, 4672</td><td class="sev-high">High</td><td>🔬 Research</td></tr>
+      <tr><td>Privilege escalation patterns</td><td>Windows Security Log</td><td>4672, 4673</td><td class="sev-high">High</td><td>🔬 Research</td></tr>
+      <tr><td>Process injection detection</td><td>Elastic Defend EDR</td><td>—</td><td class="sev-high">High</td><td>🔬 Research</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ── WAZUH + OTHER SIEM ──────────────────────────────────────── -->
+  <h2><span>03.</span> Wazuh SIEM Lab</h2>
+
+  <div class="stack-grid">
+    <div class="stack-card">
+      <div class="card-title"><span class="dot dot-teal"></span>Tools deployed</div>
+      <p>Wazuh SIEM, Kali Linux (attacker), Windows Server (target), Python security automation, PostgreSQL event storage</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-title"><span class="dot dot-red"></span>Attacks simulated</div>
+      <p>Brute-force login attempts, network port scanning, file integrity violations, suspicious authentication activity</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-title"><span class="dot dot-blue"></span>Detection methods</div>
+      <p>SIEM correlation rules, log-based alerting, rule-based brute-force detection via SQL correlation pipeline</p>
+    </div>
+    <div class="stack-card">
+      <div class="card-title"><span class="dot dot-amber"></span>Output</div>
+      <p>Structured SOC-style incident reports with containment and mitigation recommendations for each simulated scenario</p>
+    </div>
+  </div>
+
+  <!-- ── AZURE CLOUD ──────────────────────────────────────────────── -->
+  <h2><span>04.</span> Azure Cloud — RDP Brute-Force Investigation</h2>
+
+  <div class="feature-block blue">
+    <div class="f-title">Live Attack Analysis on Azure-Hosted Windows VM</div>
+    <p>Deployed a Windows VM on Microsoft Azure and deliberately exposed RDP to the internet to capture real-world brute-force attacks. Analysed attack logs over 24–48 hours: identified attacker IP geolocation patterns, authentication failure clustering, and timing-based attack patterns. Findings documented in a formal SOC-style incident investigation report.</p>
+  </div>
+
+  <!-- ── ONGOING RESEARCH ─────────────────────────────────────────── -->
+  <h2><span>05.</span> Ongoing Research Areas</h2>
+
+  <div class="feature-block purple">
+    <div class="f-title">Advanced Attack Detection in Elastic Security</div>
+    <p>Currently researching detection engineering for advanced attack techniques: lateral movement via Pass-the-Hash, privilege escalation, and process injection. Building and testing custom Elastic detection rules using KQL and EQL query languages.</p>
+  </div>
+
+  <div class="feature-block amber">
+    <div class="f-title">MITRE ATT&amp;CK Mapping</div>
+    <p>Mapping lab-simulated attack scenarios to MITRE ATT&amp;CK technique IDs to build structured threat intelligence and improve detection rule coverage across the kill chain.</p>
+  </div>
+
+</main>
+
+<footer>© 2026 Yoonus KY &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#451c2a2a2b24363c727576052228242c296b262a28" style="color:#3a5a7a;"><span cl
 <title>SOC Lab | Yoonus KY</title>
 <link rel="stylesheet" href="style.css">
 </head>
