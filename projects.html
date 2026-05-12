@@ -90,16 +90,17 @@ footer a:hover{color:var(--teal)}
           <div class="proj-subtitle">FILE INTEGRITY MONITORING PLATFORM</div>
         </div>
       </div>
-      <p class="proj-desc">A full-stack File Integrity Monitoring system built from scratch. The Python agent hashes every file with SHA-256, detects changes in real time, and reports to a FastAPI backend that streams live alerts to a web dashboard and forwards to Telegram via n8n automation.</p>
+      <p class="proj-desc">An authenticated File Integrity Monitoring platform built from scratch. The Python agent hashes files with SHA-256, detects created, modified, and deleted files, and reports to a FastAPI backend with SQLite history, dashboard authentication, severity labels, and optional n8n webhook automation.</p>
       <div class="tag-row">
-        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">Server-Sent Events</span><span class="tag">n8n</span><span class="tag">SHA-256</span><span class="tag">Telegram</span>
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">Dashboard Auth</span><span class="tag">API Key</span><span class="tag">n8n</span><span class="tag">SHA-256</span>
       </div>
       <ul class="proj-features">
-        <li>SHA-256 hashing — detects any byte-level file modification</li>
-        <li>Real-time web dashboard with live alert stream via SSE</li>
-        <li>FastAPI event collection server with SQLite persistence</li>
-        <li>n8n workflow automation for instant Telegram notifications</li>
-        <li>Cross-platform — works on Linux, macOS, and Windows</li>
+        <li>SHA-256 hashing detects any byte-level file modification</li>
+        <li>Authenticated dashboard with event history, filtering, stats, and severity labels</li>
+        <li>FastAPI event collection server with API-key protected agent reporting</li>
+        <li>SQLite persistence with safe config examples and ignored local secrets</li>
+        <li>Optional n8n webhook forwarding for alert automation</li>
+        <li>Cross-platform support for Linux, macOS, and Windows</li>
         <li>Fully documented with architecture diagram and setup guide</li>
       </ul>
       <div class="proj-links">
@@ -161,25 +162,28 @@ footer a:hover{color:var(--teal)}
     </div>
   </div>
 
-  <!-- Mini SIEM -->
+  <!-- LogSight SIEM -->
   <div class="project-card">
     <div>
       <div class="proj-top">
         <div class="proj-icon pi-teal">&#128737;</div>
         <div>
-          <div class="proj-title">Mini SIEM Log Monitoring System</div>
-          <div class="proj-subtitle">CUSTOM LOG CORRELATION PIPELINE</div>
+          <div class="proj-title">LogSight SIEM</div>
+          <div class="proj-subtitle">EDUCATIONAL MINI SIEM WORKFLOW</div>
         </div>
       </div>
-      <p class="proj-desc">Built a custom log ingestion and correlation pipeline using Python and PostgreSQL to simulate SOC monitoring workflows. Detects brute-force authentication attacks using rule-based correlation — designed to understand how SIEM detection logic works at a fundamental level.</p>
+      <p class="proj-desc">Educational mini SIEM web app for learning log ingestion, normalization, detection rules, alert generation, and investigation workflows. Built to explain how SOC pipelines turn raw logs into actionable detections.</p>
       <div class="tag-row">
-        <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">SQL Correlation</span><span class="tag">Log Analysis</span><span class="tag">Brute-Force Detection</span>
+        <span class="tag">JavaScript</span><span class="tag">SOC Workflow</span><span class="tag">Detection Rules</span><span class="tag">Log Analysis</span><span class="tag">Alert Triage</span>
       </div>
       <ul class="proj-features">
-        <li>Custom log ingestion pipeline — no off-the-shelf SIEM used</li>
-        <li>Rule-based SQL correlation for detecting authentication anomalies</li>
-        <li>Brute-force detection with configurable threshold alerting</li>
+        <li>Log ingestion and normalization workflow for SOC learning</li>
+        <li>Detection rules and alert generation for common suspicious activity</li>
+        <li>Investigation-style interface for explaining triage decisions</li>
       </ul>
+      <div class="proj-links">
+        <a href="https://github.com/Yoonas18/logsight-siem" class="btn btn-ghost" target="_blank">&#128279; GitHub</a>
+      </div>
     </div>
   </div>
 
