@@ -1,57 +1,133 @@
-# Yoonus K Y - Cybersecurity Portfolio
+# Yoonus K Y
 
-Professional cybersecurity portfolio for Yoonus K Y, focused on SOC operations, penetration testing, bug bounty research, detection engineering, and security automation.
+Cybersecurity trainer and SOC-focused security researcher.
 
-Live site: https://yoonas18.github.io/portfolio/
+I spend most of my time building small security labs, testing SIEM workflows, creating student-friendly projects, and documenting practical attack and detection scenarios.
 
-## What This Portfolio Shows
+Portfolio: https://yoonas18.github.io/portfolio/
 
-- Practical security projects, not only tool lists
-- SOC and detection engineering lab work
-- Penetration testing and bug bounty research focus
-- Python/FastAPI security automation projects
-- Clear contact paths for recruiters and collaborators
+---
 
-## Featured Projects
+## What I Work On
+
+- SOC monitoring and log analysis
+- SIEM labs and detection rules
+- Azure Sentinel and Defender experiments
+- Web and Android pentesting practice
+- Python/FastAPI security tools
+- Cybersecurity training labs for beginners
+
+---
+
+## Projects
 
 ### FIM Security Watchdog
 
-Authenticated File Integrity Monitoring platform with:
+A file integrity monitoring project I built to understand how file change detection works in real environments.
 
-- Python monitoring agent
-- SHA-256 file hashing
-- FastAPI event collector
-- SQLite event history
-- Dashboard authentication
-- Agent API-key protection
-- Severity labels and filtering
-- Optional n8n webhook automation
+It checks file hashes, records changes, and sends events to a small backend.
 
-Repository: https://github.com/Yoonas18/fim-security-automation
+Tech used:
+- Python
+- FastAPI
+- SQLite
+- SHA-256 hashing
+- n8n webhook testing
+
+Repo: https://github.com/Yoonas18/fim-security-automation
+
+---
 
 ### LogSight SIEM
 
-Educational mini SIEM for learning log ingestion, normalization, detection rules, alert generation, and investigation workflows.
+A mini SIEM-style project made mainly for students and freshers.
 
-Repository: https://github.com/Yoonas18/logsight-siem
+The idea was simple: show how logs are collected, parsed, matched with rules, and converted into alerts.
+
+Repo: https://github.com/Yoonas18/logsight-siem
+
+---
+
+### Exam Portal
+
+Built and deployed an internal exam portal for conducting cybersecurity assessments.
+
+This project was mainly created for practical batch evaluation.
+
+Features included:
+- student login
+- MCQ exam flow
+- scoring system
+- result handling
+- admin-side workflow
+
+---
+
+### SSH Honeypot Lab
+
+Set up a small honeypot-style lab to observe SSH brute-force attempts.
+
+Worked with:
+- Ubuntu VM
+- Syslog
+- Azure Sentinel
+- KQL queries
+- alert rules
+- attacker IP investigation
+
+This project helped me understand how real logs look when exposed systems start getting attacked.
+
+---
 
 ### SOC Attack Simulations
 
-SOC-style attack simulation reports and lab scenarios covering brute force, scanning, RDP analysis, Azure investigations, and SIEM detection practice.
+Created SOC-style scenarios for training and practice.
 
-Repository: https://github.com/Yoonas18/soc-attack-simulations
+Topics included:
+- brute-force login attempts
+- scanning activity
+- suspicious RDP activity
+- Azure log investigation
+- SIEM alert triage
 
-## Portfolio Sections
+Repo: https://github.com/Yoonas18/soc-attack-simulations
 
-- `index.html` - main portfolio landing page
-- `projects.html` - detailed security project writeups
-- `soc-lab.html` - SOC lab and detection engineering details
-- `pentesting.html` - penetration testing and bug bounty focus
-- `contact.html` - contact and availability information
+---
 
-## Skills Highlighted
+### Android Pentesting Practice
 
-SIEM monitoring, log analysis, threat detection, security automation, penetration testing, Python, FastAPI, SQLite, ELK, Wazuh, Splunk, Azure Sentinel, Burp Suite, Nmap, Wireshark, and OWASP testing.
+Built Android testing labs using:
+- AndroGoat
+- DIVA
+- Frida
+- Drozer
+- adb
+- Burp Suite
+
+Focused mainly on dynamic testing and SSL pinning bypass practice.
+
+---
+
+## Portfolio Website
+
+This repo contains my portfolio website.
+
+Pages included:
+- `index.html` - landing page
+- `projects.html` - project details
+- `soc-lab.html` - SOC and detection lab notes
+- `pentesting.html` - pentesting practice
+- `contact.html` - contact details
+
+Live: https://yoonas18.github.io/portfolio/
+
+---
+
+## Tools I Use Often
+
+Wazuh, Splunk, ELK, Azure Sentinel, Burp Suite, Nmap, Wireshark, Python, FastAPI, SQLite, Frida, Drozer, adb, n8n.
+
+---
 
 ## Contact
 
