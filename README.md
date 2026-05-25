@@ -2,7 +2,7 @@
 
 Cybersecurity trainer and SOC-focused security researcher.
 
-I spend most of my time building small security labs, testing SIEM workflows, creating student-friendly projects, and documenting practical attack and detection scenarios.
+I spend most of my time building security labs, testing SIEM workflows, creating student-friendly projects, and documenting practical attack and detection scenarios.
 
 Portfolio: https://yoonas18.github.io/portfolio/
 
@@ -16,6 +16,28 @@ Portfolio: https://yoonas18.github.io/portfolio/
 - Web and Android pentesting practice
 - Python/FastAPI security tools
 - Cybersecurity training labs for beginners
+- Threat detection and triage workflow design
+
+---
+
+## Recent Work
+
+### RATShield XDR Pro
+
+A defensive endpoint triage and detection platform I built to help spot RAT-like behavior across Windows, Linux, and Android ADB-connected devices.
+
+It focuses on clear evidence, practical risk scoring, MITRE ATT&CK mapping, and a clean investigation workflow that is easy to explain during reviews and demos.
+
+Tech used:
+- Python
+- FastAPI
+- HTML/CSS/JavaScript
+- psutil
+- Pydantic
+- Android ADB
+
+Repo: https://github.com/Yoonas18/ratshield-xdr-pro
+Live page: https://yoonas18.github.io/ratshield-xdr-pro/
 
 ---
 
@@ -104,7 +126,20 @@ Built Android testing labs using:
 - adb
 - Burp Suite
 
-Focused mainly on dynamic testing and SSL pinning bypass practice.
+Focused mainly on dynamic testing, app behavior review, and SSL pinning bypass practice.
+
+---
+
+## Skills and Labs
+
+- Defensive endpoint triage
+- Malware indicator review
+- MITRE ATT&CK mapping
+- Android ADB inspection
+- Risk scoring and reporting
+- FastAPI dashboards
+- Threat hunting lab design
+- SIEM alert investigation
 
 ---
 
